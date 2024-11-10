@@ -4,9 +4,12 @@ const path = require("path");
 
 let movies = [];
 
-function loadMovies() {
-  const data = fs.readFileSync(path.join(__dirname, "movies.json"));
-  movies = JSON.parse(data);
+function loadMovies(callback) {
+  fs.readFile(path.join(__dirname, "movies.json"), (err, data) => {
+    if (err) return callback(err);
+    movies = JSON.parse(data);
+    callback(null);
+  });
 }
 
 function getMovies() {

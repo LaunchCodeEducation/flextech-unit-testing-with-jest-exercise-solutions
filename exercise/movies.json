@@ -789,5 +789,404 @@
     "genre": "Crime",
     "director": "Fritz Lang",
     "rating": 8.3
+  },
+  {
+    "title": "Casablanca",
+    "year": 1942,
+    "genre": "Drama",
+    "director": "Michael Curtiz",
+    "rating": 8.5
+  },
+  {
+    "title": "The Lord of the Rings: The Two Towers",
+    "year": 2002,
+    "genre": "Adventure",
+    "director": "Peter Jackson",
+    "rating": 8.7
+  },
+  {
+    "title": "Star Wars",
+    "year": 1977,
+    "genre": "Action",
+    "director": "George Lucas",
+    "rating": 8.6
+  },
+  {
+    "title": "Psycho",
+    "year": 1960,
+    "genre": "Horror",
+    "director": "Alfred Hitchcock",
+    "rating": 8.5
+  },
+  {
+    "title": "The Intouchables",
+    "year": 2011,
+    "genre": "Biography",
+    "director": "Olivier Nakache, Éric Toledano",
+    "rating": 8.5
+  },
+  {
+    "title": "Modern Times",
+    "year": 1936,
+    "genre": "Comedy",
+    "director": "Charles Chaplin",
+    "rating": 8.5
+  },
+  {
+    "title": "City Lights",
+    "year": 1931,
+    "genre": "Comedy",
+    "director": "Charles Chaplin",
+    "rating": 8.5
+  },
+  {
+    "title": "Dangal",
+    "year": 2016,
+    "genre": "Biography",
+    "director": "Nitesh Tiwari",
+    "rating": 8.4
+  },
+  {
+    "title": "The Kid",
+    "year": 1921,
+    "genre": "Comedy",
+    "director": "Charles Chaplin",
+    "rating": 8.3
+  },
+  {
+    "title": "3 Idiots",
+    "year": 2009,
+    "genre": "Comedy",
+    "director": "Rajkumar Hirani",
+    "rating": 8.4
+  },
+  {
+    "title": "The Apartment",
+    "year": 1960,
+    "genre": "Comedy",
+    "director": "Billy Wilder",
+    "rating": 8.3
+  },
+  {
+    "title": "Double Indemnity",
+    "year": 1944,
+    "genre": "Crime",
+    "director": "Billy Wilder",
+    "rating": 8.3
+  },
+  {
+    "title": "Princess Mononoke",
+    "year": 1997,
+    "genre": "Animation",
+    "director": "Hayao Miyazaki",
+    "rating": 8.4
+  },
+  {
+    "title": "Your Name",
+    "year": 2016,
+    "genre": "Animation",
+    "director": "Makoto Shinkai",
+    "rating": 8.4
+  },
+  {
+    "title": "Braveheart",
+    "year": 1995,
+    "genre": "Biography",
+    "director": "Mel Gibson",
+    "rating": 8.3
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "year": 1962,
+    "genre": "Drama",
+    "director": "Robert Mulligan",
+    "rating": 8.2
+  },
+  {
+    "title": "Toy Story 3",
+    "year": 2010,
+    "genre": "Animation",
+    "director": "Lee Unkrich",
+    "rating": 8.2
+  },
+  {
+    "title": "The Lion King",
+    "year": 1994,
+    "genre": "Animation",
+    "director": "Roger Allers, Rob Minkoff",
+    "rating": 8.5
+  },
+  {
+    "title": "Amadeus",
+    "year": 1984,
+    "genre": "Biography",
+    "director": "Milos Forman",
+    "rating": 8.3
+  },
+  {
+    "title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+    "year": 1964,
+    "genre": "Comedy",
+    "director": "Stanley Kubrick",
+    "rating": 8.4
+  },
+  {
+    "title": "Capernaum",
+    "year": 2018,
+    "genre": "Drama",
+    "director": "Nadine Labaki",
+    "rating": 8.4
+  },
+  {
+    "title": "Alien",
+    "year": 1979,
+    "genre": "Horror",
+    "director": "Ridley Scott",
+    "rating": 8.4
+  },
+  {
+    "title": "The Great Escape",
+    "year": 1963,
+    "genre": "Adventure",
+    "director": "John Sturges",
+    "rating": 8.2
+  },
+  {
+    "title": "Witness for the Prosecution",
+    "year": 1957,
+    "genre": "Crime",
+    "director": "Billy Wilder",
+    "rating": 8.4
+  },
+  {
+    "title": "The Bridge on the River Kwai",
+    "year": 1957,
+    "genre": "Adventure",
+    "director": "David Lean",
+    "rating": 8.1
+  },
+  {
+    "title": "The Third Man",
+    "year": 1949,
+    "genre": "Film-Noir",
+    "director": "Carol Reed",
+    "rating": 8.1
+  },
+  {
+    "title": "Once Upon a Time in the West",
+    "year": 1968,
+    "genre": "Western",
+    "director": "Sergio Leone",
+    "rating": 8.5
+  },
+  {
+    "title": "All About Eve",
+    "year": 1950,
+    "genre": "Drama",
+    "director": "Joseph L. Mankiewicz",
+    "rating": 8.2
+  },
+  {
+    "title": "The Treasure of the Sierra Madre",
+    "year": 1948,
+    "genre": "Adventure",
+    "director": "John Huston",
+    "rating": 8.2
+  },
+  {
+    "title": "Rashomon",
+    "year": 1950,
+    "genre": "Crime",
+    "director": "Akira Kurosawa",
+    "rating": 8.2
+  },
+  {
+    "title": "The Great Dictator",
+    "year": 1940,
+    "genre": "Comedy",
+    "director": "Charles Chaplin",
+    "rating": 8.4
+  },
+  {
+    "title": "Sunset Blvd.",
+    "year": 1950,
+    "genre": "Drama",
+    "director": "Billy Wilder",
+    "rating": 8.4
+  },
+  {
+    "title": "Cinema Paradiso",
+    "year": 1988,
+    "genre": "Drama",
+    "director": "Giuseppe Tornatore",
+    "rating": 8.5
+  },
+  {
+    "title": "The Lives of Others",
+    "year": 2006,
+    "genre": "Drama",
+    "director": "Florian Henckel von Donnersmarck",
+    "rating": 8.4
+  },
+  {
+    "title": "Paths of Glory",
+    "year": 1957,
+    "genre": "Drama",
+    "director": "Stanley Kubrick",
+    "rating": 8.4
+  },
+  {
+    "title": "Chinatown",
+    "year": 1974,
+    "genre": "Drama",
+    "director": "Roman Polanski",
+    "rating": 8.2
+  },
+  {
+    "title": "The Seventh Seal",
+    "year": 1957,
+    "genre": "Drama",
+    "director": "Ingmar Bergman",
+    "rating": 8.1
+  },
+  {
+    "title": "Grave of the Fireflies",
+    "year": 1988,
+    "genre": "Animation",
+    "director": "Isao Takahata",
+    "rating": 8.5
+  },
+  {
+    "title": "The Thing",
+    "year": 1982,
+    "genre": "Horror",
+    "director": "John Carpenter",
+    "rating": 8.1
+  },
+  {
+    "title": "The Wizard of Oz",
+    "year": 1939,
+    "genre": "Adventure",
+    "director": "Victor Fleming",
+    "rating": 8.0
+  },
+  {
+    "title": "The Gold Rush",
+    "year": 1925,
+    "genre": "Adventure",
+    "director": "Charles Chaplin",
+    "rating": 8.2
+  },
+  {
+    "title": "Requiem for a Dream",
+    "year": 2000,
+    "genre": "Drama",
+    "director": "Darren Aronofsky",
+    "rating": 8.3
+  },
+  {
+    "title": "Singin' in the Rain",
+    "year": 1952,
+    "genre": "Comedy",
+    "director": "Stanley Donen, Gene Kelly",
+    "rating": 8.3
+  },
+  {
+    "title": "The General",
+    "year": 1926,
+    "genre": "Action",
+    "director": "Clyde Bruckman, Buster Keaton",
+    "rating": 8.1
+  },
+  {
+    "title": "Bicycle Thieves",
+    "year": 1948,
+    "genre": "Drama",
+    "director": "Vittorio De Sica",
+    "rating": 8.3
+  },
+  {
+    "title": "Some Like It Hot",
+    "year": 1959,
+    "genre": "Comedy",
+    "director": "Billy Wilder",
+    "rating": 8.2
+  },
+  {
+    "title": "The Deer Hunter",
+    "year": 1978,
+    "genre": "Drama",
+    "director": "Michael Cimino",
+    "rating": 8.1
+  },
+  {
+    "title": "Metropolis",
+    "year": 1927,
+    "genre": "Drama",
+    "director": "Fritz Lang",
+    "rating": 8.3
+  },
+  {
+    "title": "The Truman Show",
+    "year": 1998,
+    "genre": "Comedy",
+    "director": "Peter Weir",
+    "rating": 8.1
+  },
+  {
+    "title": "A Separation",
+    "year": 2011,
+    "genre": "Drama",
+    "director": "Asghar Farhadi",
+    "rating": 8.3
+  },
+  {
+    "title": "The Secret in Their Eyes",
+    "year": 2009,
+    "genre": "Crime",
+    "director": "Juan José Campanella",
+    "rating": 8.2
+  },
+  {
+    "title": "Hotel Rwanda",
+    "year": 2004,
+    "genre": "Biography",
+    "director": "Terry George",
+    "rating": 8.1
+  },
+  {
+    "title": "The Imitation Game",
+    "year": 2014,
+    "genre": "Biography",
+    "director": "Morten Tyldum",
+    "rating": 8.0
+  },
+  {
+    "title": "Spotlight",
+    "year": 2015,
+    "genre": "Biography",
+    "director": "Tom McCarthy",
+    "rating": 8.1
+  },
+  {
+    "title": "Room",
+    "year": 2015,
+    "genre": "Drama",
+    "director": "Lenny Abrahamson",
+    "rating": 8.1
+  },
+  {
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "genre": "Adventure",
+    "director": "Wes Anderson",
+    "rating": 8.1
+  },
+  {
+    "title": "Into the Wild",
+    "year": 2007,
+    "genre": "Adventure",
+    "director": "Sean Penn",
+    "rating": 8.1
   }
 ]
