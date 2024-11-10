@@ -23,8 +23,8 @@ package.json - Manages dependencies and scripts.
 
 7. Install Dependencies
 
-Run the following command to install Jest:
+Run the following command inside of `exercise/app/` to install the app's dependencies
 
 ```
-npm install jest
+npm install
 ```
