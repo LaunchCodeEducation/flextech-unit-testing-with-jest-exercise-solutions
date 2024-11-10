@@ -1,0 +1,3 @@
+Github repo with solutions:
+
+https://github.com/LaunchCodeEducation/flextech-unit-testing-with-jest-exercise-solutions

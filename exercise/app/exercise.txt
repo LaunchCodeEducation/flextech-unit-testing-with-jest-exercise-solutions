@@ -1,0 +1,533 @@
+Part 2: 25 Unit Testing Exercises Using Jest
+
+We will create unit tests to cover the functionality of our application, focusing on various Jest concepts.
+
+Directory Structure:
+
+__tests__/ - Contains all test files.
+movieData.test.js
+search.test.js
+sort.test.js
+
+Exercise 1: Installing Jest and Setting Up
+Description: Install Jest and set up the testing environment in package.json.
+
+Answer:
+
+Already done in package.json:
+
+```
+"scripts": {
+  "test": "jest --coverage"
+},
+"devDependencies": {
+  "jest": "^29.0.0"
+}
+
+```
+
+Install Jest:
+
+```
+npm install
+```
+
+Exercise 2: Writing a Simple Test
+Description: Write a simple test in movieData.test.js to check if movies are loaded correctly.
+
+Answer
+
+```
+// __tests__/movieData.test.js
+const { loadMovies, getMovies } = require('../movieData');
+
+test('should load movies data', () => {
+  loadMovies();
+  const movies = getMovies();
+  expect(movies.length).toBeGreaterThan(100);
+});
+
+```
+
+Exercise 3: Using describe Blocks
+Description: Organize tests using describe blocks in search.test.js.
+
+```
+// __tests__/search.test.js
+const { loadMovies, getMovies } = require('../movieData');
+const { searchByTitle, searchByDirector } = require('../search');
+
+describe('Search Functions', () => {
+  beforeAll(() => {
+    loadMovies();
+  });
+
+  test('should find movies by title', () => {
+    const movies = getMovies();
+    const results = searchByTitle(movies, 'Godfather');
+    expect(results.length).toBeGreaterThan(0);
+  });
+
+  test('should find movies by director', () => {
+    const movies = getMovies();
+    const results = searchByDirector(movies, 'Nolan');
+    expect(results.length).toBeGreaterThan(0);
+  });
+});
+
+
+```
+
+Exercise 4: Using beforeEach and afterEach Hooks
+Description: Use beforeEach and afterEach to set up and tear down in sort.test.js.
+
+```
+// __tests__/sort.test.js
+const { loadMovies, getMovies } = require('../movieData');
+const { sortByTitle } = require('../sort');
+
+let movies;
+
+describe('Sort Functions', () => {
+  beforeEach(() => {
+    loadMovies();
+    movies = getMovies();
+  });
+
+  afterEach(() => {
+    movies = null;
+  });
+
+  test('should sort movies by title', () => {
+    const sorted = sortByTitle(movies);
+    expect(sorted[0].title).toBeDefined();
+  });
+});
+
+```
+
+Exercise 5: Using toEqual Matcher
+Description: Write a test that uses toEqual to compare objects.
+
+```
+// __tests__/search.test.js
+
+test('should return correct movie object', () => {
+  const movies = [
+    { title: 'Test Movie', year: 2020 },
+    { title: 'Another Movie', year: 2019 },
+  ];
+  const results = searchByTitle(movies, 'Test Movie');
+  expect(results[0]).toEqual({ title: 'Test Movie', year: 2020 });
+});
+
+```
+
+Exercise 6: Testing for Exceptions with toThrow
+Description: Test that an exception is thrown when loading invalid movie data.
+
+```
+// __tests__/movieData.test.js
+
+const fs = require('fs');
+jest.mock('fs');
+
+test('should throw error when movie data is invalid', () => {
+  fs.readFileSync.mockImplementation(() => '{ invalid json ');
+  expect(() => {
+    loadMovies();
+  }).toThrow();
+});
+
+```
+
+Exercise 7: Using Mock Functions
+Description: Mock the fs module to test error handling in movieData.js.
+
+Answer:
+
+Already done in Exercise 6 with jest.mock('fs');.
+
+
+
+Exercise 8: Testing Asynchronous Code with Callbacks
+Description: Modify movieData.js to load movies asynchronously and write tests using callbacks.
+
+Answer:
+
+Modify movieData.js:
+
+```
+// movieData.js
+const fs = require('fs');
+const path = require('path');
+
+let movies = [];
+
+function loadMovies(callback) {
+  fs.readFile(path.join(__dirname, 'movies.json'), (err, data) => {
+    if (err) return callback(err);
+    movies = JSON.parse(data);
+    callback(null);
+  });
+}
+
+function getMovies() {
+  return movies;
+}
+
+module.exports = { loadMovies, getMovies };
+
+```
+
+Test Asynchronous Loading:
+
+```
+// __tests__/movieData.test.js
+
+test('should load movies data asynchronously', (done) => {
+  loadMovies((err) => {
+    expect(err).toBeNull();
+    const movies = getMovies();
+    expect(movies.length).toBeGreaterThan(100);
+    done();
+  });
+});
+
+
+```
+
+Exercise 9: Using done Callback
+Description: Ensure the test waits for the asynchronous code to complete using done.
+
+Answer:
+
+Already shown in Exercise 8.
+
+
+Exercise 10: Testing Promises with resolves
+Description: Modify search.js to return a Promise and test using resolves.
+
+Answer:
+
+Modify search.js:
+
+```
+// search.js
+function searchByTitle(movies, title) {
+  return new Promise((resolve) => {
+    const results = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(title.toLowerCase())
+    );
+    resolve(results);
+  });
+}
+
+module.exports = { searchByTitle };
+
+```
+
+Test with resolves:
+
+```
+// __tests__/search.test.js
+
+test('should find movies by title using Promise', () => {
+  const movies = getMovies();
+  return expect(searchByTitle(movies, 'Godfather')).resolves.toHaveLength(
+    expect.any(Number)
+  );
+});
+
+```
+
+Exercise 11: Testing Async/Await Functions
+Description: Write tests using async/await syntax.
+
+```
+// __tests__/search.test.js
+
+test('should find movies by title using async/await', async () => {
+  const movies = getMovies();
+  const results = await searchByTitle(movies, 'Godfather');
+  expect(results.length).toBeGreaterThan(0);
+});
+
+```
+
+Exercise 12: Using toBeTruthy and toBeFalsy
+Description: Write tests that use toBeTruthy and toBeFalsy.
+
+```
+// __tests__/search.test.js
+
+test('should return truthy value when movies are found', async () => {
+  const movies = getMovies();
+  const results = await searchByTitle(movies, 'Godfather');
+  expect(results.length > 0).toBeTruthy();
+});
+
+test('should return falsy value when no movies are found', async () => {
+  const movies = getMovies();
+  const results = await searchByTitle(movies, 'Nonexistent Movie');
+  expect(results.length > 0).toBeFalsy();
+});
+
+```
+
+Exercise 13: Using toContain Matcher
+Description: Test that a specific movie title is in the results array.
+
+```
+// __tests__/search.test.js
+
+test('should contain "The Godfather" in search results', async () => {
+  const movies = getMovies();
+  const results = await searchByTitle(movies, 'Godfather');
+  const titles = results.map((movie) => movie.title);
+  expect(titles).toContain('The Godfather');
+});
+
+```
+
+Exercise 14: Using jest.fn() to Create Mock Functions
+Description: Mock a function in sort.js to test how many times it's called.
+
+```
+// __tests__/sort.test.js
+
+test('should call compare function correct number of times', () => {
+  const compareFn = jest.fn((a, b) => a.title.localeCompare(b.title));
+  const movies = getMovies();
+  movies.sort(compareFn);
+  expect(compareFn).toHaveBeenCalled();
+  expect(compareFn.mock.calls.length).toBe(movies.length - 1);
+});
+
+```
+
+
+Exercise 15: Using Spies to Monitor Function Calls
+Description: Use jest.spyOn to monitor calls to searchByTitle.
+
+```
+// __tests__/search.test.js
+
+test('should call searchByTitle function', async () => {
+  const spy = jest.spyOn(require('../search'), 'searchByTitle');
+  const movies = getMovies();
+  await searchByTitle(movies, 'Godfather');
+  expect(spy).toHaveBeenCalled();
+  spy.mockRestore();
+});
+
+```
+
+Exercise 16: Testing for Exceptions in Async Code
+Description: Test that an exception is thrown in async code using rejects.
+
+```
+// __tests__/movieData.test.js
+
+test('should reject when loading invalid data', () => {
+  fs.readFile.mockImplementation((path, callback) => {
+    callback(new Error('File not found'), null);
+  });
+  return expect(
+    new Promise((resolve, reject) => {
+      loadMovies((err) => {
+        if (err) reject(err);
+        else resolve();
+      });
+    })
+  ).rejects.toThrow('File not found');
+});
+
+```
+
+Exercise 17: Measuring Code Coverage
+Description: Run tests with coverage and ensure all functions are covered.
+
+Answer:
+
+Run:
+```
+npm test --coverage
+```
+
+Check the coverage report generated by Jest to ensure all functions are covered.
+
+Exercise 18: Configuring Coverage Thresholds
+Description: Configure Jest to enforce coverage thresholds in package.json.
+
+```
+// package.json
+"jest": {
+  "collectCoverage": true,
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80,
+      "statements": 80
+    }
+  }
+}
+
+```
+
+Exercise 19: Testing with toStrictEqual
+Description: Use toStrictEqual to test for deep equality.
+
+```
+// __tests__/search.test.js
+
+test('should return exact movie object', async () => {
+  const movies = [{ title: 'Test Movie', year: 2020 }];
+  const results = await searchByTitle(movies, 'Test Movie');
+  expect(results[0]).toStrictEqual({ title: 'Test Movie', year: 2020 });
+});
+
+```
+
+Exercise 20: Testing with Custom Matchers
+Description: Create a custom matcher to check if an array is sorted.
+
+```
+// __tests__/sort.test.js
+
+expect.extend({
+  toBeSortedByTitle(received) {
+    for (let i = 1; i < received.length; i++) {
+      if (received[i - 1].title > received[i].title) {
+        return {
+          message: () => 'Array is not sorted by title',
+          pass: false,
+        };
+      }
+    }
+    return {
+      message: () => 'Array is sorted by title',
+      pass: true,
+    };
+  },
+});
+
+test('should sort movies by title', () => {
+  const movies = getMovies();
+  const sorted = sortByTitle(movies);
+  expect(sorted).toBeSortedByTitle();
+});
+
+```
+
+Exercise 21: Mocking Modules with jest.mock
+Description: Mock the entire fs module to avoid actual file reads.
+
+Answer:
+
+Already done in Exercise 6 and 16.
+
+
+Exercise 22: Using jest.clearAllMocks
+Description: Clear mock function calls between tests.
+
+Answer:
+
+```
+// __tests__/sort.test.js
+
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
+```
+
+Exercise 23: Testing Functions that Use External APIs
+Description: Mock an external API call within a function (hypothetical in this context).
+
+Answer:
+
+Suppose movieData.js fetches data from an API.
+
+```
+// __tests__/movieData.test.js
+
+jest.mock('axios');
+const axios = require('axios');
+
+test('should fetch movies from API', async () => {
+  axios.get.mockResolvedValue({ data: [{ title: 'API Movie' }] });
+  await loadMoviesFromAPI();
+  const movies = getMovies();
+  expect(movies).toEqual([{ title: 'API Movie' }]);
+});
+
+```
+
+
+Exercise 24: Using toMatch for String Matching
+Description: Test that a string matches a regular expression.
+
+```
+// __tests__/search.test.js
+
+test('should match movie title pattern', () => {
+  const movies = [{ title: 'The Matrix' }];
+  const results = searchByTitle(movies, 'matrix');
+  expect(results[0].title).toMatch(/Matrix/i);
+});
+
+```
+
+Exercise 25: Test-Driven Development Practice
+Description: Write a test first for a new function filterByGenre, then implement the function.
+
+Answer:
+
+Write Test First:
+
+```
+// __tests__/search.test.js
+
+test('should filter movies by genre', () => {
+  const movies = [
+    { title: 'Movie 1', genre: 'Action' },
+    { title: 'Movie 2', genre: 'Drama' },
+  ];
+  const results = filterByGenre(movies, 'Action');
+  expect(results).toEqual([{ title: 'Movie 1', genre: 'Action' }]);
+});
+
+```
+
+Implement Function:
+
+```
+// search.js
+
+function filterByGenre(movies, genre) {
+  return movies.filter(
+    (movie) => movie.genre.toLowerCase() === genre.toLowerCase()
+  );
+}
+
+module.exports = { searchByTitle, searchByDirector, filterByGenre };
+
+```
+
+Conclusion
+
+These exercises cover various Jest unit testing concepts, including setting up Jest, writing tests with different matchers, 
+organizing tests with describe blocks, using hooks, mocking functions and modules, testing asynchronous code, and measuring code coverage.
+
+By implementing these tests, you ensure that your application is robust, maintainable, and functions as expected. 
+This approach aligns with best practices in software development and encourages writing testable, high-quality code.
+
+Note: Remember to run your tests frequently during development:
+
+```
+npm test
+```
+
+Ensure that all tests pass and that your code meets the coverage thresholds specified.
