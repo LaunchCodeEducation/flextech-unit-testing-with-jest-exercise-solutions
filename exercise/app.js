@@ -32,8 +32,8 @@ function handleMenuOption(option) {
   const movies = getMovies();
   switch (option) {
     case "1":
-      rl.question("Enter title to search: ", (title) => {
-        const results = searchByTitle(movies, title);
+      rl.question("Enter title to search: ", async (title) => {
+        const results = await searchByTitle(movies, title);
         displayMovies(results);
         promptUser();
       });
@@ -71,6 +71,7 @@ function handleMenuOption(option) {
 }
 
 function displayMovies(movies) {
+  console.log(movies);
   console.log("\nMovies:");
   movies.forEach((movie, index) => {
     console.log(
