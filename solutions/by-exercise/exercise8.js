@@ -1,6 +1,6 @@
 /*
 Exercise 8: Testing Asynchronous Code with Callbacks
-Description: Modify movieData.js to load movies asynchronously and write tests using callbacks.
+Description: Modify movieData.js to load movies asynchronously 
 
 Answer:
 
@@ -13,11 +13,10 @@ const path = require("path");
 
 let movies = [];
 
-function loadMovies(callback) {
+function loadMovies() {
   fs.readFile(path.join(__dirname, "movies.json"), (err, data) => {
     if (err) return callback(err);
     movies = JSON.parse(data);
-    callback(null);
   });
 }
 

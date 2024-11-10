@@ -17,5 +17,3 @@ function searchByTitle(movies, title) {
     resolve(results);
   });
 }
-
-module.exports = { searchByTitle };

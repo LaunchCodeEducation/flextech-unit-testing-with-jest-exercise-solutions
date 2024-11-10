@@ -1,5 +1,8 @@
 const fs = require("fs");
+const axios = require("axios");
 jest.mock("fs");
+jest.mock("axios");
+
 const { loadMovies, getMovies } = require("../movieData");
 
 test("should load movies data", () => {
@@ -22,4 +25,25 @@ test("should load movies data asynchronously", (done) => {
     expect(movies.length).toBeGreaterThan(100);
     done();
   });
+});
+
+test("should reject when loading invalid data", () => {
+  fs.readFile.mockImplementation((path, callback) => {
+    callback(new Error("File not found"), null);
+  });
+  return expect(
+    new Promise((resolve, reject) => {
+      loadMovies((err) => {
+        if (err) reject(err);
+        else resolve();
+      });
+    })
+  ).rejects.toThrow("File not found");
+});
+
+test("should fetch movies from API", async () => {
+  axios.get.mockResolvedValue({ data: [{ title: "API Movie" }] });
+  await loadMoviesFromAPI();
+  const movies = getMovies();
+  expect(movies).toEqual([{ title: "API Movie" }]);
 });
