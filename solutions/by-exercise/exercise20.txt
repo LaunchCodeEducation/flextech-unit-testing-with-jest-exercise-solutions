@@ -1,0 +1,22 @@
+Exercise 20:
+
+Question: 
+
+Configure Jest to collect coverage only from bookManager.js and 
+exclude other files or directories.
+
+
+
+Answer:
+
+Update jest.config.js:
+
+```
+module.exports = {
+  testEnvironment: 'node',
+  collectCoverageFrom: ['bookManager.js'],
+};
+```
+
+Now, when running tests with coverage, 
+Jest will only collect coverage data from bookManager.js.

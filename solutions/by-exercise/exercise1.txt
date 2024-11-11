@@ -1,0 +1,23 @@
+
+Exercise 1:
+
+Question: 
+
+Explain the purpose of unit tests in the context of the addBook and 
+removeBook functions in bookManager.js. 
+
+How do unit tests fit into the software development lifecycle for this module?
+
+
+Answer:
+
+Unit tests verify that individual functions like addBook and removeBook work 
+correctly by testing them in isolation. 
+
+They help catch bugs early, ensure code reliability, and 
+facilitate maintenance. 
+
+In the software development lifecycle, unit tests are written during 
+development to validate each function's behavior, contributing to 
+continuous integration and delivery.
+

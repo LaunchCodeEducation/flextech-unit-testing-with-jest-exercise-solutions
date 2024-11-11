@@ -1,0 +1,37 @@
+Exercise 17:
+
+
+Question: 
+
+Collect coverage statistics using Jest and configure thresholds to 
+enforce code quality. 
+
+Set a threshold of 90% for statements, functions, and lines, and 
+80% for branches in jest.config.js.
+
+
+
+Answer:
+
+Update jest.config.js:
+
+```
+module.exports = {
+  testEnvironment: 'node',
+  coverageThreshold: {
+    global: {
+      statements: 90,
+      branches: 80,
+      functions: 90,
+      lines: 90,
+    },
+  },
+};
+```
+
+Now, when running tests with coverage, Jest will enforce these thresholds:
+
+`npm test -- --coverage`
+
+
+If the coverage falls below these thresholds, Jest will report an error.

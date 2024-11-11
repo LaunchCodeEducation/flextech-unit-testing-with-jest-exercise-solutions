@@ -2,6 +2,8 @@ jest.mock("fs");
 
 const fs = require("fs");
 
+const { loadBooks, books } = require("../bookManager");
+
 fs.readFile.mockImplementation((path, encoding, callback) => {
   callback(
     null,

@@ -1,0 +1,24 @@
+
+Exercise 16:
+
+Question: 
+
+Measure code coverage and understand metrics like statement, 
+branch, function, and line coverage. 
+
+Run Jest to generate a coverage report for bookManager.js.
+
+
+Answer:
+
+Run tests with coverage:
+
+`npm test -- --coverage`
+
+Review the generated coverage report in the coverage directory, 
+which includes:
+
+- Statements: Percent of executable statements covered.
+- Branches: Percent of control flow branches covered.
+- Functions: Percent of functions called during tests.
+- Lines: Percent of lines executed.

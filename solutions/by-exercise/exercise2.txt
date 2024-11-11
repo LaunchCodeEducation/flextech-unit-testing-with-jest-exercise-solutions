@@ -1,0 +1,19 @@
+Exercise 2:
+
+Question: 
+
+Describe the differences between manual testing and automated unit testing for 
+the findBooksByAuthor function. 
+
+What are the benefits of using automated tests in this case?
+
+Answer:
+
+Manual testing involves a human executing the function and verifying the 
+output, which is time-consuming and error-prone. 
+
+Automated unit testing uses scripts to run tests automatically, providing 
+quick and consistent feedback. 
+
+For findBooksByAuthor, automated tests can efficiently test multiple scenarios, 
+ensuring the function works correctly without manual intervention.

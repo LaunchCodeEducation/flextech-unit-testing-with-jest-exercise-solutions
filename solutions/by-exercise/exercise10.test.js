@@ -1,3 +1,10 @@
+const {
+  addBook,
+  findBooksByAuthor,
+  removeBook,
+  books,
+} = require("../bookManager");
+
 test("addBook using toEqual", () => {
   const book = addBook("Title", "Author");
   expect(book).toEqual({ title: "Title", author: "Author" });

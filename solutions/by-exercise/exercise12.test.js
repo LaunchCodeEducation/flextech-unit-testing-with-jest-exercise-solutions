@@ -2,6 +2,8 @@ jest.mock("fs");
 
 const fs = require("fs");
 
+const { saveBooks, loadBooks, books } = require("../bookManager");
+
 test("loadBooks reads books from file using mocked fs.readFile", async () => {
   fs.readFile.mockImplementation((path, encoding, callback) => {
     callback(

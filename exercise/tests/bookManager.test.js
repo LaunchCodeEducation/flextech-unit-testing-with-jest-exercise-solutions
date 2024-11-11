@@ -4,9 +4,6 @@ const {
   addBook,
   updateBookTitle,
   removeBook,
-  findBooksByAuthor,
-  saveBooks,
-  loadBooks,
   books,
 } = require("../bookManager");
 

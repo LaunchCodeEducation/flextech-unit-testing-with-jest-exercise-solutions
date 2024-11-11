@@ -54,39 +54,9 @@ module.exports = {
   // Existing exports...
   updateBookTitle,
 };
-2. Jest Basics
-Exercise 4:
-Question: Install Jest and set it up for the project using npm. Provide the necessary commands and configuration steps.
 
-Answer:
 
-Initialize npm:
 
-bash
-Copy code
-npm init -y
-Install Jest:
-
-bash
-Copy code
-npm install --save-dev jest
-Update package.json:
-
-json
-Copy code
-{
-  "scripts": {
-    "test": "jest"
-  }
-}
-Create jest.config.js (optional):
-
-javascript
-Copy code
-// jest.config.js
-module.exports = {
-  testEnvironment: 'node',
-};
 Exercise 5:
 Question: Write a simple unit test using Jest's test and expect functions to test addBook.
 
@@ -121,28 +91,11 @@ test('removeBook should remove a book from the collection', () => {
 test('removeBook should throw an error if the book is not found', () => {
   expect(() => removeBook('Nonexistent Book')).toThrow('Book not found');
 });
-Exercise 7:
-Question: Run Jest tests using the command line and configure Jest with a configuration file to use verbose output.
 
-Answer:
 
-Update jest.config.js:
 
-javascript
-Copy code
-// jest.config.js
-module.exports = {
-  testEnvironment: 'node',
-  verbose: true,
-};
-Run tests:
-
-bash
-Copy code
-npm test
-3. Test File Organization
 Exercise 8:
-Question: Structure test files using describe blocks to group tests for addBook, removeBook, and findBooksByAuthor functions.
+Question: Structure test files using describe blocks to group tests for addBook, removeBook, updateBook, and findBooksByAuthor functions.
 
 Answer:
 

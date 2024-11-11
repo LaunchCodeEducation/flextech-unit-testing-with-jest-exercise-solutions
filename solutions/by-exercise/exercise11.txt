@@ -1,0 +1,19 @@
+
+Exercise 11:
+
+Question: 
+
+Explain the differences between strict and loose equality checks in Jest, 
+and demonstrate with examples using toBe, toEqual, and 
+toStrictEqual for objects.
+
+
+Answer:
+
+toBe checks for strict identity (===), meaning both references point to 
+the same object.
+
+toEqual checks for deep equality, matching values recursively.
+
+toStrictEqual is like toEqual but checks for undefined properties and 
+object types.
