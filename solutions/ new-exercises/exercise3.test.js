@@ -1,4 +1,3 @@
-// __tests__/search.test.js
 const { loadMovies, getMovies } = require("../movieData");
 const { searchByTitle, searchByDirector } = require("../search");
 

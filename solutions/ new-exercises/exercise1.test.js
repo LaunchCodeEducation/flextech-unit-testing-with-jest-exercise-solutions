@@ -1,5 +1,5 @@
-// __tests__/movieData.test.js
-const { loadMovies, getMovies } = require("../../exercise/movieData");
+// movieData.test.js
+const { loadMovies, getMovies } = require("../movieData");
 
 test("should load movies data", () => {
   loadMovies();

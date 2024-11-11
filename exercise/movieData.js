@@ -1,17 +1,10 @@
 // movieData.js
-const fs = require("fs");
-const path = require("path");
+const movieData = require("./movies.json");
 
 let movies = [];
 
-function loadMovies(callback = null) {
-  fs.readFile(path.join(__dirname, "movies.json"), (err, data) => {
-    if (err) return callback(err);
-    movies = JSON.parse(data);
-    if (callback) {
-      callback(null);
-    }
-  });
+function loadMovies() {
+  movies = movieData;
 }
 
 function getMovies() {
