@@ -20,6 +20,7 @@ const findBooksByAuthor = (author) => {
   return books.filter((book) => book.author === author);
 };
 
+// Exercise 3
 const updateBookTitle = (oldTitle, newTitle) => {
   const book = books.find((book) => book.title === oldTitle);
   if (!book) throw new Error("Book not found");
