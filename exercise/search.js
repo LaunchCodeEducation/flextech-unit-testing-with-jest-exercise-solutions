@@ -1,11 +1,9 @@
 // search.js
 function searchByTitle(movies, title) {
-  return new Promise((resolve) => {
-    const results = movies.filter((movie) =>
-      movie.title.toLowerCase().includes(title.toLowerCase())
-    );
-    resolve(results);
-  });
+  const results = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(title.toLowerCase())
+  );
+  return results;
 }
 
 function searchByDirector(movies, director) {
@@ -14,10 +12,4 @@ function searchByDirector(movies, director) {
   );
 }
 
-function filterByGenre(movies, genre) {
-  return movies.filter(
-    (movie) => movie.genre.toLowerCase() === genre.toLowerCase()
-  );
-}
-
-module.exports = { searchByTitle, searchByDirector, filterByGenre };
+module.exports = { searchByTitle, searchByDirector };
