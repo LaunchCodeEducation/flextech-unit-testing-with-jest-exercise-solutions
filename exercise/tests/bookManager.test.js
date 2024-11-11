@@ -1,11 +1,9 @@
 // __tests__/bookManager.test.js
 
-const {
-  addBook,
-  updateBookTitle,
-  removeBook,
-  books,
-} = require("../bookManager");
+const { addBook, updateBookTitle, removeBook } = require("../bookManager");
+
+// exercise 7
+const orginalBooks = require("../bookManager").books;
 
 jest.mock("fs");
 
@@ -19,20 +17,22 @@ fs.readFile.mockImplementation((path, encoding, callback) => {
   );
 });
 
+let books = [];
+
 // exercise 7
 beforeAll(() => {
   // Save the original books array
-  books.length = 0;
+  books = orginalBooks;
 });
 
 afterAll(() => {
   // Restore the original books array if necessary
-  books.length = 0;
+  books = orginalBooks;
 });
 
 beforeEach(() => {
-  // Clear books array before each test
-  books.length = 0;
+  // reset books array before each test
+  books = orginalBooks;
 });
 
 afterEach(() => {

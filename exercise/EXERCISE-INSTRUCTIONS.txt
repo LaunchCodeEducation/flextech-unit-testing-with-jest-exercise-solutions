@@ -4,8 +4,8 @@ Exercise 1:
 
 Question: 
 
-Explain the purpose of unit tests in the context of the addBook and 
-removeBook functions in bookManager.js. 
+Explain the purpose of unit tests in the context of the `addBook` and 
+`removeBook` functions in bookManager.js. 
 
 How do unit tests fit into the software development lifecycle for this module?
 
@@ -16,7 +16,7 @@ Exercise 2:
 Question: 
 
 Describe the differences between manual testing and automated unit testing for 
-the findBooksByAuthor function. 
+the `findBooksByAuthor` function. 
 
 What are the benefits of using automated tests in this case?
 
@@ -27,7 +27,7 @@ Exercise 3:
 Question: 
 
 Implement test-driven development (TDD) by writing a test for a 
-new function updateBookTitle(oldTitle, newTitle) in bookManager.js before 
+new function `updateBookTitle(oldTitle, newTitle)` in bookManager.js before 
 implementing it. 
 
 The function should update the title of a book.
@@ -38,8 +38,8 @@ Exercise 4:
 
 Question: 
 
-Write a simple unit test using Jest's test and 
-expect functions to test addBook.
+Write a simple unit test using Jest's `test` and 
+expect functions to test `addBook`.
 
 
 
@@ -47,7 +47,7 @@ Exercise 5:
 
 Question: 
 
-Use different matchers to test removeBook, 
+Use different matchers to test `removeBook`, 
 including the case where the book is not found.
 
 
@@ -56,7 +56,7 @@ Exercise 6:
 
 Question: 
 
-Structure test files using describe blocks to group tests for 
+Structure test files using `describe` blocks to group tests for 
 addBook, removeBook, updateBook, and findBooksByAuthor functions.
 
 
