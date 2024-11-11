@@ -1,24 +1,20 @@
-
-Exercise 16:
+Exercise 18:
 
 Question: 
 
-Measure code coverage and understand metrics like statement, 
-branch, function, and line coverage. 
-
-Run Jest to generate a coverage report for bookManager.js.
+Explain how code coverage metrics like statement, branch, function, and 
+line coverage help in assessing code quality for bookManager.js.
 
 
 Answer:
 
-Run tests with coverage:
+Statement Coverage: Ensures that all executable statements are tested.
 
-`npm test -- --coverage`
+Branch Coverage: Checks that every possible path (if/else) has been executed.
 
-Review the generated coverage report in the coverage directory, 
-which includes:
+Function Coverage: Verifies that all functions have been called in tests.
 
-- Statements: Percent of executable statements covered.
-- Branches: Percent of control flow branches covered.
-- Functions: Percent of functions called during tests.
-- Lines: Percent of lines executed.
+Line Coverage: Similar to statement coverage but measures actual lines executed.
+
+These metrics help identify untested parts of the code, ensuring that 
+critical functionality is verified and reducing the risk of bugs.

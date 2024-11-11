@@ -1,20 +1,22 @@
-Exercise 18:
+Exercise 20:
 
 Question: 
 
-Explain how code coverage metrics like statement, branch, function, and 
-line coverage help in assessing code quality for bookManager.js.
+Configure Jest to collect coverage only from bookManager.js and 
+exclude other files or directories.
+
 
 
 Answer:
 
-Statement Coverage: Ensures that all executable statements are tested.
+Update jest.config.js:
 
-Branch Coverage: Checks that every possible path (if/else) has been executed.
+```
+module.exports = {
+  testEnvironment: 'node',
+  collectCoverageFrom: ['bookManager.js'],
+};
+```
 
-Function Coverage: Verifies that all functions have been called in tests.
-
-Line Coverage: Similar to statement coverage but measures actual lines executed.
-
-These metrics help identify untested parts of the code, ensuring that 
-critical functionality is verified and reducing the risk of bugs.
+Now, when running tests with coverage, 
+Jest will only collect coverage data from bookManager.js.

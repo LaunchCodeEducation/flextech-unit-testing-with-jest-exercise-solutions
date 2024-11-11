@@ -1,47 +1,36 @@
-// __tests__/bookManager.test.js
-
 const {
   addBook,
-  updateBookTitle,
+  findBooksByAuthor,
   removeBook,
   books,
 } = require("../bookManager");
 
-describe("Book Manager Functions", () => {
-  describe("addBook", () => {
-    test("addBook should add a new book to the collection", () => {
-      const book = addBook("Test Title", "Test Author");
-      expect(book).toEqual({ title: "Test Title", author: "Test Author" });
-      expect(books).toContainEqual(book);
-    });
-  });
+test("addBook using toEqual", () => {
+  const book = addBook("Title", "Author");
+  expect(book).toEqual({ title: "Title", author: "Author" });
+});
 
-  describe("removeBook", () => {
-    test("removeBook should remove a book from the collection", () => {
-      addBook("Book to Remove", "Author");
-      const removedBook = removeBook("Book to Remove");
-      expect(removedBook.title).toBe("Book to Remove");
-    });
+test("books array using toContainEqual", () => {
+  const book = addBook("Another Title", "Another Author");
+  expect(books).toContainEqual(book);
+});
 
-    test("removeBook should throw an error if the book is not found", () => {
-      expect(() => removeBook("Nonexistent Book")).toThrow("Book not found");
-    });
-  });
+test("book title matches pattern using toMatch", () => {
+  const book = addBook("Unique Title", "Author");
+  expect(book.title).toMatch(/Unique/);
+});
 
-  describe("findBooksByAuthor", () => {});
+test("findBooksByAuthor returns non-empty array using toBeTruthy", () => {
+  addBook("Book 1", "Author");
+  const foundBooks = findBooksByAuthor("Author");
+  expect(foundBooks.length).toBeTruthy();
+});
 
-  describe("update book", () => {
-    test("updateBookTitle should update the title of an existing book", () => {
-      addBook("Old Title", "Author Name");
-      const updatedBook = updateBookTitle("Old Title", "New Title");
-      expect(updatedBook.title).toBe("New Title");
-      expect(books.find((book) => book.title === "New Title")).toBeTruthy();
-    });
+test("findBooksByAuthor returns empty array using toBeFalsy", () => {
+  const foundBooks = findBooksByAuthor("Nonexistent Author");
+  expect(foundBooks.length).toBeFalsy();
+});
 
-    test("updateBookTitle should throw an error if the book does not exist", () => {
-      expect(() => updateBookTitle("Nonexistent Title", "Any Title")).toThrow(
-        "Book not found"
-      );
-    });
-  });
+test("removeBook throws error using toThrow", () => {
+  expect(() => removeBook("Nonexistent Book")).toThrow("Book not found");
 });

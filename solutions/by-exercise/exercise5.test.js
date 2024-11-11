@@ -1,9 +1,11 @@
-// __tests__/bookManager.test.js
+const { addBook, removeBook } = require("../bookManager");
 
-const { addBook, books } = require("../bookManager");
+test("removeBook should remove a book from the collection", () => {
+  addBook("Book to Remove", "Author");
+  const removedBook = removeBook("Book to Remove");
+  expect(removedBook.title).toBe("Book to Remove");
+});
 
-test("addBook should add a new book to the collection", () => {
-  const book = addBook("Test Title", "Test Author");
-  expect(book).toEqual({ title: "Test Title", author: "Test Author" });
-  expect(books).toContainEqual(book);
+test("removeBook should throw an error if the book is not found", () => {
+  expect(() => removeBook("Nonexistent Book")).toThrow("Book not found");
 });

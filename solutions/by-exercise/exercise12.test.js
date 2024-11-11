@@ -1,30 +1,17 @@
-jest.mock("fs");
+jest.mock("../bookManager", () => ({
+  ...jest.requireActual("../bookManager"),
+  loadBooks: jest.fn(),
+}));
 
-const fs = require("fs");
+const { loadBooks, books } = require("../bookManager");
 
-const { saveBooks, loadBooks, books } = require("../bookManager");
-
-test("loadBooks reads books from file using mocked fs.readFile", async () => {
-  fs.readFile.mockImplementation((path, encoding, callback) => {
-    callback(
-      null,
-      JSON.stringify([{ title: "Mocked Book", author: "Mocked Author" }])
-    );
-  });
-
+test("loadBooks resolves successfully", async () => {
+  loadBooks.mockResolvedValue();
   await loadBooks();
-  expect(books).toContainEqual({
-    title: "Mocked Book",
-    author: "Mocked Author",
-  });
+  expect(loadBooks).toHaveBeenCalled();
 });
 
-test("saveBooks writes books to file using mocked fs.writeFile", async () => {
-  books.push({ title: "Book to Save", author: "Author" });
-  fs.writeFile.mockImplementation((path, data, encoding, callback) => {
-    callback(null);
-  });
-
-  await saveBooks();
-  expect(fs.writeFile).toHaveBeenCalled();
+test("loadBooks handles error correctly", async () => {
+  loadBooks.mockRejectedValue(new Error("Read error"));
+  await expect(loadBooks()).rejects.toThrow("Read error");
 });

@@ -1,26 +1,18 @@
-// __tests__/bookManager.test.js
-
-const { books } = require("../bookManager");
-
-beforeAll(() => {
-  // Save the original books array
-  books.length = 0;
+test("primitive values with toBe and toEqual", () => {
+  expect(5).toBe(5); // Passes
+  expect(5).toEqual(5); // Passes
 });
 
-afterAll(() => {
-  // Restore the original books array if necessary
-  books.length = 0;
-});
+// Below test is expected to FAIL!
+test("objects with toEqual and toStrictEqual", () => {
+  const book1 = { title: "Title", author: "Author" };
+  const book2 = { title: "Title", author: "Author" };
 
-beforeEach(() => {
-  // Clear books array before each test
-  books.length = 0;
-});
+  expect(book1).toEqual(book2); // Passes
+  expect(book1).toBe(book2); // Fails
+  expect(book1).toStrictEqual(book2); // Passes
 
-afterEach(() => {
-  // Additional teardown if necessary
-});
-
-describe("Book Manager Functions", () => {
-  // Tests go here
+  const book3 = { title: "Title", author: "Author", extra: undefined };
+  expect(book1).toEqual(book3); // Passes
+  expect(book1).toStrictEqual(book3); // Fails
 });

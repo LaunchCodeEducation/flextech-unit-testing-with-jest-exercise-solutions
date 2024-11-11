@@ -1,17 +1,11 @@
-jest.mock("fs");
+const bookManager = require("../bookManager");
 
-const fs = require("fs");
+test("spy on addBook", () => {
+  const spy = jest.spyOn(bookManager, "addBook");
 
-const { loadBooks, books } = require("../bookManager");
+  console.log(spy);
+  bookManager.addBook("Spy Book", "Spy Author");
+  expect(spy).toHaveBeenCalledWith("Spy Book", "Spy Author");
 
-fs.readFile.mockImplementation((path, encoding, callback) => {
-  callback(
-    null,
-    JSON.stringify([{ title: "AutoMocked Book", author: "Author" }])
-  );
-});
-
-test("loadBooks with automocked fs", async () => {
-  await loadBooks();
-  expect(books).toContainEqual({ title: "AutoMocked Book", author: "Author" });
+  spy.mockRestore();
 });

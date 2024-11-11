@@ -1,392 +1,161 @@
-Jest Exercises and Solutions
-1. Unit Testing Fundamentals
+
 Exercise 1:
-Question: Explain the purpose of unit tests in the context of the addBook and removeBook functions in bookManager.js. How do unit tests fit into the software development lifecycle for this module?
 
-Answer:
+Question: 
 
-Unit tests verify that individual functions like addBook and removeBook work correctly by testing them in isolation. They help catch bugs early, ensure code reliability, and facilitate maintenance. In the software development lifecycle, unit tests are written during development to validate each function's behavior, contributing to continuous integration and delivery.
+Explain the purpose of unit tests in the context of the addBook and 
+removeBook functions in bookManager.js. 
+
+How do unit tests fit into the software development lifecycle for this module?
+
+
 
 Exercise 2:
-Question: Describe the differences between manual testing and automated unit testing for the findBooksByAuthor function. What are the benefits of using automated tests in this case?
+Question: 
 
-Answer:
+Describe the differences between manual testing and automated unit testing for 
+the findBooksByAuthor function. 
 
-Manual testing involves a human executing the function and verifying the output, which is time-consuming and error-prone. Automated unit testing uses scripts to run tests automatically, providing quick and consistent feedback. For findBooksByAuthor, automated tests can efficiently test multiple scenarios, ensuring the function works correctly without manual intervention.
+What are the benefits of using automated tests in this case?
+
+
 
 Exercise 3:
-Question: Implement test-driven development (TDD) by writing a test for a new function updateBookTitle(oldTitle, newTitle) in bookManager.js before implementing it. The function should update the title of a book.
+Question: 
 
-Answer:
+Implement test-driven development (TDD) by writing a test for a 
+new function updateBookTitle(oldTitle, newTitle) in bookManager.js before 
+implementing it. 
 
-Test:
+The function should update the title of a book.
 
-javascript
-Copy code
-// __tests__/bookManager.test.js
 
-const { addBook, updateBookTitle, books } = require('../bookManager');
 
-test('updateBookTitle should update the title of an existing book', () => {
-  addBook('Old Title', 'Author Name');
-  const updatedBook = updateBookTitle('Old Title', 'New Title');
-  expect(updatedBook.title).toBe('New Title');
-  expect(books.find(book => book.title === 'New Title')).toBeTruthy();
-});
+Exercise 4:
 
-test('updateBookTitle should throw an error if the book does not exist', () => {
-  expect(() => updateBookTitle('Nonexistent Title', 'Any Title')).toThrow('Book not found');
-});
-Implementation:
+Question: 
 
-javascript
-Copy code
-// bookManager.js
-
-const updateBookTitle = (oldTitle, newTitle) => {
-  const book = books.find((book) => book.title === oldTitle);
-  if (!book) throw new Error('Book not found');
-  book.title = newTitle;
-  return book;
-};
-
-module.exports = {
-  // Existing exports...
-  updateBookTitle,
-};
+Write a simple unit test using Jest's test and expect functions to test addBook.
 
 
 
 Exercise 5:
-Question: Write a simple unit test using Jest's test and expect functions to test addBook.
 
-Answer:
+Question: 
 
-javascript
-Copy code
-// __tests__/bookManager.test.js
+Use different matchers to test removeBook, 
+including the case where the book is not found.
 
-const { addBook, books } = require('../bookManager');
 
-test('addBook should add a new book to the collection', () => {
-  const book = addBook('Test Title', 'Test Author');
-  expect(book).toEqual({ title: 'Test Title', author: 'Test Author' });
-  expect(books).toContainEqual(book);
-});
+
+
 Exercise 6:
-Question: Use different matchers to test removeBook, including the case where the book is not found.
+Question: Structure test files using describe blocks to group tests for 
+addBook, removeBook, updateBook, and findBooksByAuthor functions.
 
-Answer:
 
-javascript
-Copy code
-const { addBook, removeBook } = require('../bookManager');
 
-test('removeBook should remove a book from the collection', () => {
-  addBook('Book to Remove', 'Author');
-  const removedBook = removeBook('Book to Remove');
-  expect(removedBook.title).toBe('Book to Remove');
-});
+Exercise 7:
 
-test('removeBook should throw an error if the book is not found', () => {
-  expect(() => removeBook('Nonexistent Book')).toThrow('Book not found');
-});
+Question: 
+
+Use hooks (beforeAll, afterAll, beforeEach, afterEach) to 
+perform setup and teardown tasks for tests involving the books array.
 
 
 
 Exercise 8:
-Question: Structure test files using describe blocks to group tests for addBook, removeBook, updateBook, and findBooksByAuthor functions.
 
-Answer:
+Question: Use matchers like toBe, toEqual, toContain, toMatch, 
+toBeTruthy, toBeFalsy, and toThrow in tests for 
+various functions in bookManager.js.
 
-javascript
-Copy code
-// __tests__/bookManager.test.js
 
-describe('Book Manager Functions', () => {
-  describe('addBook', () => {
-    test('should add a new book', () => {
-      // Test code
-    });
-  });
 
-  describe('removeBook', () => {
-    test('should remove an existing book', () => {
-      // Test code
-    });
-    test('should throw an error if book not found', () => {
-      // Test code
-    });
-  });
-
-  describe('findBooksByAuthor', () => {
-    test('should find books by author', () => {
-      // Test code
-    });
-  });
-});
 Exercise 9:
-Question: Use hooks (beforeAll, afterAll, beforeEach, afterEach) to perform setup and teardown tasks for tests involving the books array.
 
-Answer:
+Question: 
 
-javascript
-Copy code
-// __tests__/bookManager.test.js
+Explain the differences between strict and loose equality checks in Jest, 
+and demonstrate with examples using toBe, toEqual, and toStrictEqual for 
+objects.
 
-const { books } = require('../bookManager');
 
-beforeAll(() => {
-  // Save the original books array
-  books.length = 0;
-});
 
-afterAll(() => {
-  // Restore the original books array if necessary
-  books.length = 0;
-});
-
-beforeEach(() => {
-  // Clear books array before each test
-  books.length = 0;
-});
-
-afterEach(() => {
-  // Additional teardown if necessary
-});
-
-describe('Book Manager Functions', () => {
-  // Tests go here
-});
-4. Common Matchers in Jest
 Exercise 10:
-Question: Use matchers like toBe, toEqual, toContain, toMatch, toBeTruthy, toBeFalsy, and toThrow in tests for various functions in bookManager.js.
 
-Answer:
+Question: 
 
-javascript
-Copy code
-test('addBook using toEqual', () => {
-  const book = addBook('Title', 'Author');
-  expect(book).toEqual({ title: 'Title', author: 'Author' });
-});
+Create mock functions to isolate tests and avoid dependencies on fs in 
+loadBooks and saveBooks. 
 
-test('books array using toContainEqual', () => {
-  const book = addBook('Another Title', 'Another Author');
-  expect(books).toContainEqual(book);
-});
+Mock the fs.readFile and fs.writeFile methods.
 
-test('book title matches pattern using toMatch', () => {
-  const book = addBook('Unique Title', 'Author');
-  expect(book.title).toMatch(/Unique/);
-});
 
-test('findBooksByAuthor returns non-empty array using toBeTruthy', () => {
-  addBook('Book 1', 'Author');
-  const foundBooks = findBooksByAuthor('Author');
-  expect(foundBooks.length).toBeTruthy();
-});
 
-test('findBooksByAuthor returns empty array using toBeFalsy', () => {
-  const foundBooks = findBooksByAuthor('Nonexistent Author');
-  expect(foundBooks.length).toBeFalsy();
-});
-
-test('removeBook throws error using toThrow', () => {
-  expect(() => removeBook('Nonexistent Book')).toThrow('Book not found');
-});
 Exercise 11:
-Question: Explain the differences between strict and loose equality checks in Jest, and demonstrate with examples using toBe, toEqual, and toStrictEqual for objects.
+Question: 
 
-Answer:
+Use Jest's automock feature to automatically mock the 
+fs module and test loadBooks.
 
-toBe checks for strict identity (===), meaning both references point to the same object.
-toEqual checks for deep equality, matching values recursively.
-toStrictEqual is like toEqual but checks for undefined properties and object types.
-Examples:
 
-javascript
-Copy code
-test('primitive values with toBe and toEqual', () => {
-  expect(5).toBe(5); // Passes
-  expect(5).toEqual(5); // Passes
-});
-
-test('objects with toEqual and toStrictEqual', () => {
-  const book1 = { title: 'Title', author: 'Author' };
-  const book2 = { title: 'Title', author: 'Author' };
-
-  expect(book1).toEqual(book2); // Passes
-  expect(book1).toBe(book2); // Fails
-  expect(book1).toStrictEqual(book2); // Passes
-
-  const book3 = { title: 'Title', author: 'Author', extra: undefined };
-  expect(book1).toEqual(book3); // Passes
-  expect(book1).toStrictEqual(book3); // Fails
-});
-5. Mocking and Spying
 Exercise 12:
-Question: Create mock functions to isolate tests and avoid dependencies on fs in loadBooks and saveBooks. Mock the fs.readFile and fs.writeFile methods.
+Question: 
 
-Answer:
+Write manual mocks to customize the behavior of loadBooks for 
+testing different scenarios, such as successful data retrieval and errors.
 
-javascript
-Copy code
-jest.mock('fs');
 
-const fs = require('fs');
 
-test('loadBooks reads books from file using mocked fs.readFile', async () => {
-  fs.readFile.mockImplementation((path, encoding, callback) => {
-    callback(null, JSON.stringify([{ title: 'Mocked Book', author: 'Mocked Author' }]));
-  });
-
-  await loadBooks();
-  expect(books).toContainEqual({ title: 'Mocked Book', author: 'Mocked Author' });
-});
-
-test('saveBooks writes books to file using mocked fs.writeFile', async () => {
-  books.push({ title: 'Book to Save', author: 'Author' });
-  fs.writeFile.mockImplementation((path, data, encoding, callback) => {
-    callback(null);
-  });
-
-  await saveBooks();
-  expect(fs.writeFile).toHaveBeenCalled();
-});
 Exercise 13:
-Question: Use Jest's automock feature to automatically mock the fs module and test loadBooks.
+Question: 
 
-Answer:
+Use spies to monitor calls to addBook and assert they were called correctly.
 
-javascript
-Copy code
-jest.mock('fs');
 
-const fs = require('fs');
-
-fs.readFile.mockImplementation((path, encoding, callback) => {
-  callback(null, JSON.stringify([{ title: 'AutoMocked Book', author: 'Author' }]));
-});
-
-test('loadBooks with automocked fs', async () => {
-  await loadBooks();
-  expect(books).toContainEqual({ title: 'AutoMocked Book', author: 'Author' });
-});
 Exercise 14:
-Question: Write manual mocks to customize the behavior of loadBooks for testing different scenarios, such as successful data retrieval and errors.
+Question: 
 
-Answer:
+Measure code coverage and understand metrics like statement, 
+branch, function, and line coverage. 
 
-javascript
-Copy code
-jest.mock('../bookManager', () => ({
-  ...jest.requireActual('../bookManager'),
-  loadBooks: jest.fn(),
-}));
+Run Jest to generate a coverage report for bookManager.js.
 
-const { loadBooks, books } = require('../bookManager');
 
-test('loadBooks resolves successfully', async () => {
-  loadBooks.mockResolvedValue();
-  await loadBooks();
-  expect(loadBooks).toHaveBeenCalled();
-});
-
-test('loadBooks handles error correctly', async () => {
-  loadBooks.mockRejectedValue(new Error('Read error'));
-  await expect(loadBooks()).rejects.toThrow('Read error');
-});
 Exercise 15:
-Question: Use spies to monitor calls to addBook and assert they were called correctly.
 
-Answer:
+Question: 
 
-javascript
-Copy code
-const { addBook } = require('../bookManager');
+Collect coverage statistics using Jest and configure thresholds to 
+enforce code quality. 
 
-test('spy on addBook', () => {
-  const spy = jest.spyOn(require('../bookManager'), 'addBook');
-  
-  addBook('Spy Book', 'Spy Author');
-  expect(spy).toHaveBeenCalledWith('Spy Book', 'Spy Author');
-  
-  spy.mockRestore();
-});
-6. Code Coverage
+Set a threshold of 90% for statements, functions, and lines, 
+and 80% for branches in jest.config.js.
+
+
 Exercise 16:
-Question: Measure code coverage and understand metrics like statement, branch, function, and line coverage. Run Jest to generate a coverage report for bookManager.js.
 
-Answer:
+Question: 
 
-Run tests with coverage:
+Explain how code coverage metrics like statement, branch, function, 
+and line coverage help in assessing code quality for bookManager.js.
 
-bash
-Copy code
-npm test -- --coverage
-Review the generated coverage report in the coverage directory, which includes:
 
-Statements: Percent of executable statements covered.
-Branches: Percent of control flow branches covered.
-Functions: Percent of functions called during tests.
-Lines: Percent of lines executed.
+
 Exercise 17:
-Question: Collect coverage statistics using Jest and configure thresholds to enforce code quality. Set a threshold of 90% for statements, functions, and lines, and 80% for branches in jest.config.js.
 
-Answer:
+Question: 
 
-Update jest.config.js:
+Discuss the importance of code coverage thresholds and how they 
+enforce code quality in a project like bookManager.js.
 
-javascript
-Copy code
-module.exports = {
-  testEnvironment: 'node',
-  coverageThreshold: {
-    global: {
-      statements: 90,
-      branches: 80,
-      functions: 90,
-      lines: 90,
-    },
-  },
-};
-Now, when running tests with coverage, Jest will enforce these thresholds:
 
-bash
-Copy code
-npm test -- --coverage
-If the coverage falls below these thresholds, Jest will report an error.
 
 Exercise 18:
-Question: Explain how code coverage metrics like statement, branch, function, and line coverage help in assessing code quality for bookManager.js.
 
-Answer:
+Question: 
 
-Statement Coverage: Ensures that all executable statements are tested.
-Branch Coverage: Checks that every possible path (if/else) has been executed.
-Function Coverage: Verifies that all functions have been called in tests.
-Line Coverage: Similar to statement coverage but measures actual lines executed.
-These metrics help identify untested parts of the code, ensuring that critical functionality is verified and reducing the risk of bugs.
+Configure Jest to collect coverage only from bookManager.js and 
+exclude other files or directories.
 
-Exercise 19:
-Question: Discuss the importance of code coverage thresholds and how they enforce code quality in a project like bookManager.js.
-
-Answer:
-
-Code coverage thresholds set minimum acceptable coverage levels, encouraging developers to write sufficient tests. They prevent code with inadequate testing from being merged, promoting high code quality and ensuring reliability. In bookManager.js, setting thresholds ensures that key functionalities are thoroughly tested.
-
-Exercise 20:
-Question: Configure Jest to collect coverage only from bookManager.js and exclude other files or directories.
-
-Answer:
-
-Update jest.config.js:
-
-javascript
-Copy code
-module.exports = {
-  testEnvironment: 'node',
-  collectCoverageFrom: ['bookManager.js'],
-};
-Now, when running tests with coverage, Jest will only collect coverage data from bookManager.js.
